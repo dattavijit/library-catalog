@@ -91,9 +91,19 @@ single-author, single-genre, no join tables.
 - **ISBN validation logic** (format, uniqueness) isn't designed yet — deferred to build
   time. Owner: Avi. Decide-by: before implementing the Book behavior definition's field
   validation for ISBN.
-- **Object naming convention** (CDS interface/consumption view names, behavior
-  definition, service definition/binding names) isn't decided. Owner: Avi. Decide-by:
-  before creating the first CDS view.
+
+## Decisions (continued)
+
+- **Object naming convention — resolved 2026-08-18, during ticket 1 build.** ZLIB_
+  prefix, SAP tutorial style: DB tables `ZLIB_AUTHOR` / `ZLIB_GENRE` / `ZLIB_BOOK`; CDS
+  interface views `ZI_LIB_AUTHOR` / `ZI_LIB_GENRE` / `ZI_LIB_BOOK`; CDS consumption
+  views `ZC_LIB_AUTHOR` / `ZC_LIB_GENRE` / `ZC_LIB_BOOK`; behavior definition lives on
+  the Book interface view; service definition/binding `ZUI_LIB_BOOK` /
+  `ZUI_LIB_BOOK_O4`.
+  - Why: Avi's choice between two options (ZLIB_-grouped vs. plain Z-prefix) — picked
+    the grouped, tutorial-matching pattern for namespacing clarity.
+  - Reversibility: cheap for Author/Genre (only 4 objects exist so far); gets
+    progressively more expensive once Book and its dependents exist.
 
 ## Assumptions
 
