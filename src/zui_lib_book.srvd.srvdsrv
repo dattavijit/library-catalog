@@ -1,0 +1,4 @@
+@EndUserText.label: 'Library Catalog: Book UI Service'
+define service ZUI_LIB_BOOK {
+  expose ZC_LIB_BOOK as Book;
+}

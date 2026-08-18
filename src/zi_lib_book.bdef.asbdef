@@ -1,0 +1,28 @@
+managed implementation in class zbp_i_lib_book unique;
+with draft;
+
+define behavior for ZI_LIB_BOOK alias Book
+persistent table zlib_book
+draft table zlib_book_d
+lock master
+total etag last_changed_at
+etag master last_changed_at
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly, numbering:managed ) id;
+  field ( readonly )                    last_changed_at;
+
+  validation validateIsbn on save { create; update; field isbn; }
+
+  draft action Resume;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft determine action Prepare
+  {
+    validation validateIsbn;
+  }
+}

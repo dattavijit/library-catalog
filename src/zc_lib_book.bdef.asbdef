@@ -1,0 +1,15 @@
+projection;
+use draft;
+
+define behavior for ZC_LIB_BOOK alias Book
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Resume;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+}
